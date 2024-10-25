@@ -1,0 +1,4 @@
+# ignore everything in venv/ subfolder
+venv/
+build/
+script.spec
