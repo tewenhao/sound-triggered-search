@@ -1,6 +1,20 @@
 import pyaudio
 import numpy as np
 import webbrowser
+# import tkinter.messagebox
+import ctypes
+
+# start by showing the user a popup window
+
+# tkinter.messagebox.showinfo(
+#     title="script running",
+#     message="hello! loud audio search detecting script is running. press ok to continue."
+# )
+ctypes.windll.user32.MessageBoxW(
+    0,
+    "hello! loud audio search detecting script is running. press ok to continue.",
+    "script running!"
+)
 
 # declare PyAudio object and stream object
 p = pyaudio.PyAudio()
@@ -18,7 +32,7 @@ while volume <= 400:    # can change threshold here. this is some arbitrary valu
     data = stream.read(2048)
     processed_data = np.frombuffer(data, dtype=np.int16)
     volume = np.abs(processed_data).mean()
-    print(volume)
+    # print(volume)
     
 # here, we already received the required clap/audio signal
 query = "sexy girls in bikini"
